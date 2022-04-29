@@ -1,0 +1,10 @@
+"use strict";
+exports.__esModule = true;
+require("reflect-metadata");
+var express = require("express");
+var bodyParser = require("body-parser");
+// import { Product } from "./entity/Product";
+var app = express();
+app.use(bodyParser.json());
+// createConnection("ormConfig.json");
+app.listen(8080, function () { console.log("Server Running..."); });
