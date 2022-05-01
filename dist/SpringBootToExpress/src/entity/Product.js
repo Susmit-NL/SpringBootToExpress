@@ -12,13 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 const typeorm_1 = require("typeorm");
 let Product = class Product {
-    constructor(name, price, inventory, description) {
-        this.name = name;
-        this.description = description;
-        this.inventory = inventory;
-        this.price = price;
-    }
-    ;
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
@@ -41,8 +34,7 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
 Product = __decorate([
-    (0, typeorm_1.Entity)(),
-    __metadata("design:paramtypes", [String, Number, Number, String])
+    (0, typeorm_1.Entity)()
 ], Product);
 exports.Product = Product;
 //# sourceMappingURL=Product.js.map

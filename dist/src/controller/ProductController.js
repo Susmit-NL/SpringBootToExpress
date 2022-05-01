@@ -33,7 +33,7 @@ class ProductController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("updating product in controller");
-            res.send(yield this.a.update(new Product_1.Product(req.body.name, req.body.price, req.body.inventory, req.body.description)));
+            res.send(yield this.a.update(new Product_1.Product(req.body.name, req.body.price, req.body.inventory, req.body.description), req.params.id));
         });
     }
     findById(req, res) {

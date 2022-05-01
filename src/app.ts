@@ -4,7 +4,7 @@ import express from "express";
 import * as dotEnv from "dotenv";
 import * as bodyParser from "body-parser";
 import { Product } from "./entity/Product";
-import { getAllProduct } from "./controller/ProductController";
+import router from "./routes/Route"
 
 
 const app=express();
@@ -27,13 +27,18 @@ export const AppDataSource = new DataSource({
 
 AppDataSource.initialize()
     .then(() => {
-
+        app.use("/",router);
+        // const productController=new ProductController();
         
-        app.get("/allProducts",(request,response)=>getAllProduct(request,response));
+        // app.get("/products",(request,response)=>productController.getAllProduct(request,response));
 
+        // app.post("/product",(request,response)=>productController.create(request,response));
 
+        // app.put("/product/:id",(request,response)=>productController.update(request,response));
+        
+        // app.get("/product/:id",(request,response)=>productController.findById(request,response));
 
-        app.listen(8080,()=>{console.log("Server Running...")});
+        app.listen(8080,()=>{console.log("Server Running...")});  
         
     })
     .catch((error) => console.log(error))

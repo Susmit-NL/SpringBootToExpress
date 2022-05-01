@@ -50,11 +50,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
 });
 exports.AppDataSource.initialize()
     .then(() => {
-    const productController = new ProductController_1.ProductController();
-    app.get("/allProducts", (request, response) => productController.getAllProduct(request, response));
-    app.post("/create", (request, response) => productController.create(request, response));
-    app.post("/update", (request, response) => productController.update(request, response));
-    app.get("/product/:id", (request, response) => productController.findById(request, response));
+    app.get("/allProducts", (request, response) => (0, ProductController_1.getAllProduct)(request, response));
     app.listen(8080, () => { console.log("Server Running..."); });
 })
     .catch((error) => console.log(error));
