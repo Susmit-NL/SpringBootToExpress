@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductRepository = void 0;
-const app_1 = require("../app");
+const dbConfig_1 = require("../config/dbConfig");
 const Product_1 = require("../entity/Product");
 class ProductRepository {
     constructor() {
         //creating repository of Product
-        this.productRepository = app_1.AppDataSource.getRepository(Product_1.Product);
+        this.productRepository = dbConfig_1.AppDataSource.getRepository(Product_1.Product);
     }
     ;
     //get  all the products from database

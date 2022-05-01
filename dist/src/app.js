@@ -26,37 +26,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppDataSource = void 0;
 require("reflect-metadata");
-const typeorm_1 = require("typeorm");
 const express_1 = __importDefault(require("express"));
 const dotEnv = __importStar(require("dotenv"));
 const bodyParser = __importStar(require("body-parser"));
-const Product_1 = require("./entity/Product");
-const ProductController_1 = require("./controller/ProductController");
+const Route_1 = __importDefault(require("./routes/Route"));
 const app = (0, express_1.default)();
 app.use(bodyParser.json());
 dotEnv.config();
-exports.AppDataSource = new typeorm_1.DataSource({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "root",
-    password: "password",
-    database: "ExpressTest",
-    entities: [Product_1.Product],
-    synchronize: true,
-    logging: false,
-});
-exports.AppDataSource.initialize()
-    .then(() => {
-    const productController = new ProductController_1.ProductController();
-    app.get("/product/:id", (request, response) => productController.findById(request, response));
-    app.post("/product", (request, response) => productController.create(request, response));
-    app.get("/product", (request, response) => productController.getAllProduct(request, response));
-    app.put("/product/:id", (request, response) => productController.update(request, response));
-    app.delete("/product/:id", (request, response) => productController.delete(request, response));
-    app.listen(8082, () => { console.log("Server Running in port 8082..."); });
-})
-    .catch((error) => console.log(error));
+app.use("/", Route_1.default);
+app.listen(8083, () => { console.log("Server Running in port 8083..."); });
 //# sourceMappingURL=app.js.map

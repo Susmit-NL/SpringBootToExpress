@@ -1,4 +1,4 @@
-import { AppDataSource } from "../app";
+import { AppDataSource } from "../config/dbConfig";
 import { Product } from "../entity/Product";
 
 

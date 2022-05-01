@@ -1,15 +1,17 @@
 "use strict";
-// import { DataSourceOptions } from "typeorm"
-// import { Product } from "../entity/Product"
-//   export const config:DataSourceOptions={
-//         type: "mysql",
-//         host: "localhost",
-//         port: 3306,
-//         username: "root",
-//         password: "password",
-//         database: "ExpressTest",
-//         entities: [Product],
-//         synchronize: true,
-//         logging: true,
-//     }
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppDataSource = void 0;
+const typeorm_1 = require("typeorm");
+const Product_1 = require("../entity/Product");
+exports.AppDataSource = new typeorm_1.DataSource({
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "password",
+    database: "ExpressTest",
+    entities: [Product_1.Product],
+    synchronize: true,
+    logging: false,
+});
 //# sourceMappingURL=dbConfig.js.map
