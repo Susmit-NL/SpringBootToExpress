@@ -8,8 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 var typeorm_1 = require("typeorm");
 var Product = /** @class */ (function () {
-    function Product() {
+    function Product(name, price, inventory, description) {
+        this.name = name;
+        this.description = description;
+        this.inventory = inventory;
+        this.price = price;
     }
+    ;
     __decorate([
         typeorm_1.PrimaryGeneratedColumn()
     ], Product.prototype, "id");

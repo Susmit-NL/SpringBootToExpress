@@ -1,13 +1,11 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const ProductController_1 = require("../controller/ProductController");
-const router = express_1.default.Router();
-const productController = new ProductController_1.ProductController();
-router.get("/product/:id", (request, response) => productController.findById(request, response));
-// router.post("/product",(request,response)=>productController.create(request,response));
-exports.default = router;
+// import express from "express";
+// import { ProductController } from "../controller/ProductController";
+// const router=express.Router();
+// const productController=new ProductController();
+// // router.get("/product/:id",(request,response)=>productController.findById(request,response));
+// // router.post("/product",(request,response)=>productController.create(request,response));
+// router.get("/product",(request,response)=>productController.getAllProduct(request,response));
+// // router.put("/product/:id",(request,response)=>productController.update(request,response));
+// export default router;
 //# sourceMappingURL=Route.js.map

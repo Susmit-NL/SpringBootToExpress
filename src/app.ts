@@ -4,7 +4,7 @@ import express from "express";
 import * as dotEnv from "dotenv";
 import * as bodyParser from "body-parser";
 import { Product } from "./entity/Product";
-import router from "./routes/Route"
+import { ProductController } from "./controller/ProductController";
 
 
 const app=express();
@@ -27,18 +27,16 @@ export const AppDataSource = new DataSource({
 
 AppDataSource.initialize()
     .then(() => {
-        app.use("/",router);
-        // const productController=new ProductController();
-        
-        // app.get("/products",(request,response)=>productController.getAllProduct(request,response));
 
-        // app.post("/product",(request,response)=>productController.create(request,response));
+        const productController=new ProductController();
 
-        // app.put("/product/:id",(request,response)=>productController.update(request,response));
-        
-        // app.get("/product/:id",(request,response)=>productController.findById(request,response));
+        app.get("/product/:id",(request,response)=>productController.findById(request,response));
+        app.post("/product",(request,response)=>productController.create(request,response));
+        app.get("/product",(request,response)=>productController.getAllProduct(request,response));
+        app.put("/product/:id",(request,response)=>productController.update(request,response));
+        app.delete("/product/:id",(request,response)=>productController.delete(request,response));
 
-        app.listen(8080,()=>{console.log("Server Running...")});  
+        app.listen(8082,()=>{console.log("Server Running in port 8082...")});  
         
     })
     .catch((error) => console.log(error))

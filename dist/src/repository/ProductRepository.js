@@ -14,34 +14,54 @@ const app_1 = require("../app");
 const Product_1 = require("../entity/Product");
 class ProductRepository {
     constructor() {
+        //creating repository of Product
         this.productRepository = app_1.AppDataSource.getRepository(Product_1.Product);
     }
     ;
-    // async  getAllProducts(){
-    //     const product = await this.productRepository.find();
-    //     console.log("In repository of get all products method "+product);
-    //     return product;
-    // }
-    // async create(product:Product){
-    //     console.log("saving product in repo");
-    //    return await this.productRepository.save(product);
-    // }
-    // async update(product:Product,id:string){
-    //     const oldProduct=await this.findById(Number(id));
-    //     if (oldProduct!=null && oldProduct!=undefined){
-    //         oldProduct.price=product.price;
-    //         oldProduct.description=product.description;
-    //         oldProduct.inventory=product.inventory;
-    //         oldProduct.name=product.name;
-    //         console.log("updating product in repo");
-    //         await this.productRepository.save(oldProduct);
-    //     }
-    //    return oldProduct;
-    // }
+    //get  all the products from database
+    getAllProducts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const product = yield this.productRepository.find();
+            console.log("In repository of get all products method " + product);
+            return product;
+        });
+    }
+    //create new product in database
+    create(product) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("saving product in repo");
+            return yield this.productRepository.save(product);
+        });
+    }
+    //update the product
+    update(product, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const oldProduct = yield this.findById(Number(id));
+            if (oldProduct != null && oldProduct != undefined) {
+                oldProduct.price = product.price;
+                oldProduct.description = product.description;
+                oldProduct.inventory = product.inventory;
+                oldProduct.name = product.name;
+                console.log("updating product in repo");
+                yield this.productRepository.save(oldProduct);
+            }
+            return oldProduct;
+        });
+    }
+    //find by id of the product
     findById(key) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("finding product from database by id " + key);
             return yield this.productRepository.findOneBy({
+                id: key,
+            });
+        });
+    }
+    //delete by id from database
+    delete(key) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("deleting product from database by id " + key);
+            return yield this.productRepository.delete({
                 id: key,
             });
         });

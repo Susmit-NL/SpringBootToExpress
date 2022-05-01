@@ -14,9 +14,14 @@ const Product_1 = require("../entity/Product");
 const ProductRepository_1 = require("../repository/ProductRepository");
 class ProductController {
     constructor() {
+        //creating object of repository
         this.a = new ProductRepository_1.ProductRepository();
     }
     ;
+    /*
+      @method:get
+      returns all products from database
+    */
     getAllProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const product = yield this.a.getAllProducts();
@@ -24,22 +29,49 @@ class ProductController {
             res.send(product);
         });
     }
+    /*
+      @method:post
+      @RequestBody:Product
+      returns newly created product
+    */
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("saving product in controller");
             res.send(yield this.a.create(new Product_1.Product(req.body.name, req.body.price, req.body.inventory, req.body.description)));
         });
     }
+    /*
+     @method:update
+     @RequestParam:Id
+     @RequestBody:Product
+     returns updated product
+   */
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("updating product in controller");
             res.send(yield this.a.update(new Product_1.Product(req.body.name, req.body.price, req.body.inventory, req.body.description), req.params.id));
         });
     }
+    /*
+     @method:get
+     @RequestParam:Id
+     returns product for given Id
+   */
     findById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("finding By Id  in controller");
             res.send(yield this.a.findById(Number(req.params.id)));
+        });
+    }
+    /*
+    @method:delete
+    @RequestParam:Id
+    deletes the product for given Id
+  */
+    delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("deleting By Id  in controller");
+            res.send(yield this.a.delete(Number(req.params.id)));
         });
     }
 }
