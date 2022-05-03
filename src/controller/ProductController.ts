@@ -25,7 +25,8 @@ export class ProductController {
   async create (req: Request, res: Response) {
     console.log('saving product in controller')
 
-    res.send(await this.a.create(new Product(req.body.name, req.body.price, req.body.inventory, req.body.description)))
+    res.send(await this.a.create(new Product(req.body.name, req.body.price
+      , req.body.inventory, req.body.description)))
   }
 
   /*
@@ -37,7 +38,8 @@ export class ProductController {
   async update (req: Request, res: Response) {
     console.log('updating product in controller')
 
-    res.send(await this.a.update(new Product(req.body.name, req.body.price, req.body.inventory, req.body.description), req.params.id))
+    res.send(await this.a.update(new Product(req.body.name, req.body.price,
+      req.body.inventory, req.body.description), req.params.id))
   }
 
   /*
