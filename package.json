@@ -7,7 +7,7 @@
     "start": "tsc && node dist/app.js",
     "lint":"eslint ./",
     "docker-build":"sudo docker build -t express2 .",
-    "docker-run":"sudo docker run --publish 8083:8083 --net=host express2",
+    "docker-run":"sudo docker run -p 8083:8083 --net=host -t express2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
