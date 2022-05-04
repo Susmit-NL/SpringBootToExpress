@@ -2,6 +2,7 @@
 import { Request, Response } from 'express'
 import { Product } from '../entity/Product'
 import { ProductRepository } from '../repository/ProductRepository'
+import { productSchema } from '../middleware/validationSchema'
 
 export class ProductController {
   // creating object of repository
@@ -24,9 +25,13 @@ export class ProductController {
   */
   async create (req: Request, res: Response) {
     console.log('saving product in controller')
-
-    res.send(await this.a.create(new Product(req.body.name, req.body.price
-      , req.body.inventory, req.body.description))).status(201)
+    try {
+      await productSchema.validateAsync(req.body)
+      res.send(await this.a.create(new Product(req.body.name, req.body.price
+        , req.body.inventory, req.body.description))).status(201)
+    } catch (err) {
+      res.status(400).send({ message: err }).send()
+    }
   }
 
   /*
@@ -37,9 +42,13 @@ export class ProductController {
  */
   async update (req: Request, res: Response) {
     console.log('updating product in controller')
-
-    res.send(await this.a.update(new Product(req.body.name, req.body.price,
-      req.body.inventory, req.body.description), req.params.id)).status(201)
+    try {
+      await productSchema.validateAsync(req.body)
+      res.send(await this.a.update(new Product(req.body.name, req.body.price,
+        req.body.inventory, req.body.description), req.params.id)).status(201)
+    } catch (err) {
+      res.status(400).send({ message: err }).send()
+    }
   }
 
   /*

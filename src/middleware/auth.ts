@@ -2,7 +2,8 @@ import { Request, Response, NextFunction } from 'express'
 import { verify } from 'jsonwebtoken'
 import signKey from '../config/signKey'
 
-const authorization = async (req: Request, res: Response, next: NextFunction) => {
+const authorization = async (req: Request, res: Response,
+  next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1]
 
   if (token) {

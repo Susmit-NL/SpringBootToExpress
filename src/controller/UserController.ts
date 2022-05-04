@@ -16,7 +16,8 @@ export class UserController {
       return res.status(401).json({ message: 'password mismatch' })
     } else {
       const jwtToken = generateToken(user)
-      return res.status(200).json({ message: 'Login Successfull', token: jwtToken })
+      return res.status(200)
+        .json({ message: 'Login Successfull', token: jwtToken })
     }
   }
 }
