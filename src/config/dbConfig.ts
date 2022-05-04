@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm'
 import { Product } from '../entity/Product'
+import { User } from '../entity/User'
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -8,7 +9,7 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: 'password',
   database: 'ExpressTest',
-  entities: [Product],
+  entities: [Product, User],
   synchronize: true,
   logging: false
 }

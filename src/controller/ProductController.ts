@@ -26,7 +26,7 @@ export class ProductController {
     console.log('saving product in controller')
 
     res.send(await this.a.create(new Product(req.body.name, req.body.price
-      , req.body.inventory, req.body.description)))
+      , req.body.inventory, req.body.description))).status(201)
   }
 
   /*
@@ -39,7 +39,7 @@ export class ProductController {
     console.log('updating product in controller')
 
     res.send(await this.a.update(new Product(req.body.name, req.body.price,
-      req.body.inventory, req.body.description), req.params.id))
+      req.body.inventory, req.body.description), req.params.id)).status(201)
   }
 
   /*

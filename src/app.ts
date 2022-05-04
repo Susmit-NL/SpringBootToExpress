@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import express from 'express'
 import * as dotEnv from 'dotenv'
 import * as bodyParser from 'body-parser'
-import router from './routes/Route'
+import router from './route/Route'
 
 const app = express()
 app.use(bodyParser.json())
