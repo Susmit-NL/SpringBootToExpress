@@ -29,6 +29,9 @@ AppDataSource.initialize()
 
     router.post('/user/login', (request, response) => userController
       .login(request, response))
+
+    router.post('/user/register', (request, response) => userController
+      .register(request, response))
   })
   .catch((error) => console.log(error))
 

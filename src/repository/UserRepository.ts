@@ -6,4 +6,8 @@ export class UserRepository {
   async findUser (name:string | undefined, userId:number |undefined) {
     return this.userRepository.findOneBy({ username: name, id: userId })
   }
+
+  async createUser (user : User) {
+    return this.userRepository.save(user)
+  }
 }
